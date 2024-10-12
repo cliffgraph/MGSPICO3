@@ -1,0 +1,43 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW1NR-9C" pn="GW1NR-LV9QN88PC6/I5">gw1nr9c-004</Device>
+    <FileList>
+        <File path="src/IKAOPLL/IKAOPLL.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_dac.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_eg.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_lfo.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_op.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_pg.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_primitives.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_reg.v" type="file.verilog" enable="1"/>
+        <File path="src/IKAOPLL/IKAOPLL_modules/IKAOPLL_timinggen.v" type="file.verilog" enable="1"/>
+        <File path="src/IKASCC/IKASCC.v" type="file.verilog" enable="1"/>
+        <File path="src/IKASCC/IKASCC_modules/IKASCC_player_a.v" type="file.verilog" enable="1"/>
+        <File path="src/IKASCC/IKASCC_modules/IKASCC_player_s.v" type="file.verilog" enable="1"/>
+        <File path="src/IKASCC/IKASCC_modules/IKASCC_primitives.v" type="file.verilog" enable="1"/>
+        <File path="src/IKASCC/IKASCC_modules/IKASCC_vrc_a.v" type="file.verilog" enable="1"/>
+        <File path="src/IKASCC/IKASCC_modules/IKASCC_vrc_s.v" type="file.verilog" enable="1"/>
+        <File path="src/MMP.v" type="file.verilog" enable="1"/>
+        <File path="src/MMP_cdc.v" type="file.verilog" enable="1"/>
+        <File path="src/MMP_control.v" type="file.verilog" enable="1"/>
+        <File path="src/MMP_dac.v" type="file.verilog" enable="1"/>
+        <File path="src/MMP_fifo.v" type="file.verilog" enable="1"/>
+        <File path="src/MMP_spdif.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_channel_mixer.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_channel_volume.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_core.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_for_mgspico3.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_register.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_selector.v" type="file.verilog" enable="1"/>
+        <File path="src/WTS/scc_tone_generator_5ch.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_osc/gowin_osc.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/spdif_tx/spdif_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/ym2149_audio/ym2149_audio.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/MMP.cst" type="file.cst" enable="1"/>
+    </FileList>
+</Project>

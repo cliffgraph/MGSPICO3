@@ -1,0 +1,1312 @@
+//Copyright (C)2014-2024 Gowin Semiconductor Corporation.
+//All rights reserved.
+//File Title: Post-PnR Simulation Model file
+//Tool Version: V1.9.9.03 (64-bit)
+//Created Time: Sat Sep 28 23:36:08 2024
+
+`timescale 100 ps/100 ps
+module SPDIF_TX_Top(
+	I_clk,
+	I_rst_n,
+	I_audio_d,
+	I_validity_bit,
+	I_user_bit,
+	I_chan_status_bit,
+	O_audio_d_req,
+	O_validity_bit_req,
+	O_user_bit_req,
+	O_chan_status_bit_req,
+	O_block_start_flag,
+	O_sub_frame0_flag,
+	O_sub_frame1_flag,
+	O_Spdif_tx_data
+);
+input I_clk;
+input I_rst_n;
+input [15:0] I_audio_d;
+input I_validity_bit;
+input I_user_bit;
+input I_chan_status_bit;
+output O_audio_d_req;
+output O_validity_bit_req;
+output O_user_bit_req;
+output O_chan_status_bit_req;
+output O_block_start_flag;
+output O_sub_frame0_flag;
+output O_sub_frame1_flag;
+output O_Spdif_tx_data;
+wire GND;
+wire [15:0] I_audio_d;
+wire I_chan_status_bit;
+wire I_clk;
+wire I_rst_n;
+wire I_user_bit;
+wire I_validity_bit;
+wire O_Spdif_tx_data;
+wire O_audio_d_req;
+wire O_block_start_flag;
+wire O_chan_status_bit_req;
+wire O_sub_frame0_flag;
+wire O_sub_frame1_flag;
+wire O_user_bit_req;
+wire O_validity_bit_req;
+wire VCC;
+wire \u_spdif_tx_top/inst_ODDR_spdif_1_Q1 ;
+wire \u_spdif_tx_top/n13_6 ;
+wire \u_spdif_tx_top/Block_start_flag ;
+wire \u_spdif_tx_top/Spdif_tx_d ;
+wire [1:0] \u_spdif_tx_top/Spdif_tx_data_Z ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n17_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n38_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n53_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n70_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n87_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n98_9 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n109_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n110_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n111_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n114_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n150_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n151_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n152_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n153_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n154_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n17_4 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n38_4 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n53_4 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n109_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n111_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n111_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n113_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n151_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n17_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n116_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n115_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n113_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n112_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n24_10 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n15_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_control/n155_8 ;
+wire [7:0] \u_spdif_tx_top/u_spdif_tx_control/Cnt_block ;
+wire [5:0] \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_41 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_42 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_43 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_44 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_45 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_46 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_47 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_48 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n64_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n18_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n16_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n15_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_4 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n64_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n19_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n17_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n15_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n187_9 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n17_9 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n19_10 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/Parity_check ;
+wire \u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ;
+wire \u_spdif_tx_top/u_spdif_tx_package/Validity_bit_req ;
+wire \u_spdif_tx_top/u_spdif_tx_package/User_bit_req ;
+wire \u_spdif_tx_top/u_spdif_tx_package/Chan_status_bit_req ;
+wire \u_spdif_tx_top/u_spdif_tx_package/Sub_frame0_flag ;
+wire \u_spdif_tx_top/u_spdif_tx_package/Sub_frame1_flag ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_51 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_53 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_55 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_57 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_59 ;
+wire \u_spdif_tx_top/u_spdif_tx_package/n62_61 ;
+wire [4:0] \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame ;
+wire [26:8] \u_spdif_tx_top/u_spdif_tx_package/Parity_vector ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n33_3 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n617_13 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n618_13 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n621_13 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n622_14 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n55_6 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n427_5 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n617_14 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n618_14 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n621_14 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n622_15 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n58_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n56_7 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n617_15 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n617_16 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n618_15 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n54_9 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n56_9 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n54_11 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n57_8 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/n58_10 ;
+wire \u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble ;
+wire [2:1] \u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg ;
+wire [1:0] \u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg ;
+wire [4:0] \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame ;
+wire [1:0] \u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode ;
+wire [1:0] \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data ;
+VCC VCC_cZ (
+  .V(VCC)
+);
+GND GND_cZ (
+  .G(GND)
+);
+GSR GSR (
+	.GSRI(VCC)
+);
+ODDR \u_spdif_tx_top/inst_ODDR_spdif  (
+	.D0(\u_spdif_tx_top/Spdif_tx_data_Z [0]),
+	.D1(\u_spdif_tx_top/Spdif_tx_data_Z [1]),
+	.CLK(I_clk),
+	.TX(VCC),
+	.Q0(O_Spdif_tx_data),
+	.Q1(\u_spdif_tx_top/inst_ODDR_spdif_1_Q1 )
+);
+defparam \u_spdif_tx_top/inst_ODDR_spdif .INIT=1'b0;
+defparam \u_spdif_tx_top/inst_ODDR_spdif .TXCLK_POL=1'b0;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n17_s0  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n17_4 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/n38_3 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n17_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n17_s0 .INIT=16'h1000;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n38_s0  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [2]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/n38_4 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n38_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n38_s0 .INIT=16'h0100;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n53_s0  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n53_4 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n53_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n53_s0 .INIT=8'h10;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n70_s0  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n53_4 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n70_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n70_s0 .INIT=8'h40;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n87_s0  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n53_4 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n87_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n87_s0 .INIT=8'h40;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n98_s6  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [5]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/n53_4 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n98_9 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n98_s6 .INIT=16'h8000;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n109_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/n109_6 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n109_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n109_s1 .INIT=8'h18;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n110_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n109_6 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n110_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n110_s1 .INIT=8'h14;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n111_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [4]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/n111_6 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n111_7 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [5]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n111_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n111_s1 .INIT=16'h0708;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n114_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n111_7 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [2]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n114_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n114_s1 .INIT=16'h0708;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n150_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n53_4 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [5]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n150_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n150_s2 .INIT=16'h7F80;
+LUT2 \u_spdif_tx_top/u_spdif_tx_control/n151_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/n151_7 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [4]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n151_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n151_s2 .INIT=4'h6;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n152_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [2]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [3]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n152_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n152_s2 .INIT=16'h7F80;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n153_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [2]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n153_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n153_s2 .INIT=8'h78;
+LUT2 \u_spdif_tx_top/u_spdif_tx_control/n154_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n154_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n154_s2 .INIT=4'h6;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n17_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [4]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/n17_5 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n17_4 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n17_s1 .INIT=16'h0100;
+LUT2 \u_spdif_tx_top/u_spdif_tx_control/n38_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [3]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [4]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n38_4 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n38_s1 .INIT=4'h1;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n53_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [4]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n53_4 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n53_s1 .INIT=8'h80;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n109_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [4]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [5]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n111_6 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n109_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n109_s2 .INIT=8'h80;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n111_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [2]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [3]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n111_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n111_s2 .INIT=16'h8000;
+LUT2 \u_spdif_tx_top/u_spdif_tx_control/n111_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n111_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n111_s3 .INIT=4'h8;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n113_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [2]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n113_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n113_s2 .INIT=8'h80;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n151_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [2]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [3]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n151_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n151_s3 .INIT=16'h8000;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n17_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [5]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [5]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n17_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n17_s2 .INIT=16'h0001;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n116_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n116_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n116_s3 .INIT=8'h15;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n115_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n115_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n115_s2 .INIT=16'h0770;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n113_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n113_6 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [3]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n113_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n113_s3 .INIT=16'h0770;
+LUT4 \u_spdif_tx_top/u_spdif_tx_control/n112_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [4]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_control/n111_6 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n112_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n112_s2 .INIT=16'h0770;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n24_s3  (
+	.I0(O_sub_frame1_flag),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [5]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_control/n38_3 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n24_10 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n24_s3 .INIT=8'hE0;
+LUT3 \u_spdif_tx_top/u_spdif_tx_control/n15_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [5]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_control/n38_3 ),
+	.I2(O_sub_frame0_flag),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n15_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n15_s2 .INIT=8'hC4;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Audio_d_req_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n38_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_audio_d_req)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Audio_d_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Validity_bit_req_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n53_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_validity_bit_req)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Validity_bit_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/User_bit_req_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n70_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_user_bit_req)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/User_bit_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Chan_status_bit_req_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n87_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_chan_status_bit_req)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Chan_status_bit_req_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_7_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n109_5 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [7])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_7_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_6_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n110_5 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [6])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_6_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_5_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n111_5 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [5])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_5_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_4_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n112_7 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [4])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_4_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_3_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n113_8 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [3])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_3_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_2_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n114_5 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [2])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_2_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n115_7 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_1_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n116_8 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_control/n98_9 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_block [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_block_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_5_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n150_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [5])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_5_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_4_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n151_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [4])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_4_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_3_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n152_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [3])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_3_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_2_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n153_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [2])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_2_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n154_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n155_8 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Block_start_flag_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n17_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_block_start_flag)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Block_start_flag_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Sub_frame1_flag_s4  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n24_10 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_sub_frame1_flag)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Sub_frame1_flag_s4 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_control/Sub_frame0_flag_s5  (
+	.D(\u_spdif_tx_top/u_spdif_tx_control/n15_7 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(O_sub_frame0_flag)
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/Sub_frame0_flag_s5 .INIT=1'b0;
+INV \u_spdif_tx_top/u_spdif_tx_control/n13_s2  (
+	.I(I_rst_n),
+	.O(\u_spdif_tx_top/n13_6 )
+);
+LUT1 \u_spdif_tx_top/u_spdif_tx_control/n155_s4  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_control/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_control/n155_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_control/n155_s4 .INIT=2'h1;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s54  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [8]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [9]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_41 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s54 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s55  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [10]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [11]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_42 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s55 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s56  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [12]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [13]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_43 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s56 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s57  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [14]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [15]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_44 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s57 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s58  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [16]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [17]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_45 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s58 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s59  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [18]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [19]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_46 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s59 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s60  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [20]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [21]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_47 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s60 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n62_s61  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [22]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [23]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n62_48 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n62_s61 .INIT=8'hCA;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n187_s0  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n187_4 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n187_5 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/n187_6 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s0 .INIT=8'hEF;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n64_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n187_5 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n187_6 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Parity_check ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/n64_6 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n64_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n64_s1 .INIT=16'h4B00;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n18_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/n19_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n18_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n18_s2 .INIT=8'h60;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n16_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n17_7 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/n19_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n16_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n16_s2 .INIT=16'h7800;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n15_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [4]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n15_7 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/n19_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n15_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n15_s2 .INIT=8'h60;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n187_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_check ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [4]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/n15_7 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_4 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s1 .INIT=8'h80;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n187_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [26]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/n187_7 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/n187_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s2 .INIT=16'h3800;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n187_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_59 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/n187_9 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s3 .INIT=16'hF21F;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n64_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n17_7 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [4]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n64_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n64_s2 .INIT=16'h7FFC;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n19_s4  (
+	.I0(\u_spdif_tx_top/Block_start_flag ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Sub_frame0_flag ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Sub_frame1_flag ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n19_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n19_s4 .INIT=8'h01;
+LUT2 \u_spdif_tx_top/u_spdif_tx_package/n17_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n17_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n17_s3 .INIT=4'h8;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n15_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n15_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n15_s3 .INIT=16'h8000;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n187_s4  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [25]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [24]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s4 .INIT=16'hFA0C;
+LUT3 \u_spdif_tx_top/u_spdif_tx_package/n187_s5  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [4]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s5 .INIT=8'h80;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n187_s6  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_61 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [4]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n187_9 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n187_s6 .INIT=16'hD3B0;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n17_s4  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/n19_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n17_9 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n17_s4 .INIT=16'h6A00;
+LUT4 \u_spdif_tx_top/u_spdif_tx_package/n19_s5  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/Block_start_flag ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_package/Sub_frame0_flag ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_package/Sub_frame1_flag ),
+	.F(\u_spdif_tx_top/u_spdif_tx_package/n19_10 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/n19_s5 .INIT=16'h0001;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_3_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n16_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [3])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_3_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_2_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n17_9 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_2_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n18_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n19_10 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Parity_check_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n64_5 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_check )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_check_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Audio_d_req_s0  (
+	.D(O_audio_d_req),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Audio_d_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Validity_bit_req_s0  (
+	.D(O_validity_bit_req),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Validity_bit_req )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Validity_bit_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/User_bit_req_s0  (
+	.D(O_user_bit_req),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/User_bit_req )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/User_bit_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Chan_status_bit_req_s0  (
+	.D(O_chan_status_bit_req),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Chan_status_bit_req )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Chan_status_bit_req_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Block_start_flag_s0  (
+	.D(O_block_start_flag),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/Block_start_flag )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Block_start_flag_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Sub_frame0_flag_s0  (
+	.D(O_sub_frame0_flag),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Sub_frame0_flag )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Sub_frame0_flag_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Sub_frame1_flag_s0  (
+	.D(O_sub_frame1_flag),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Sub_frame1_flag )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Sub_frame1_flag_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_23_s0  (
+	.D(I_audio_d[15]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [23])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_23_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_22_s0  (
+	.D(I_audio_d[14]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [22])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_22_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_21_s0  (
+	.D(I_audio_d[13]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [21])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_21_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_20_s0  (
+	.D(I_audio_d[12]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [20])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_20_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_19_s0  (
+	.D(I_audio_d[11]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [19])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_19_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_18_s0  (
+	.D(I_audio_d[10]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [18])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_18_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_17_s0  (
+	.D(I_audio_d[9]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [17])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_17_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_16_s0  (
+	.D(I_audio_d[8]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [16])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_16_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_15_s0  (
+	.D(I_audio_d[7]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [15])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_15_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_14_s0  (
+	.D(I_audio_d[6]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [14])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_14_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_13_s0  (
+	.D(I_audio_d[5]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [13])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_13_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_12_s0  (
+	.D(I_audio_d[4]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [12])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_12_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_11_s0  (
+	.D(I_audio_d[3]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [11])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_11_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_10_s0  (
+	.D(I_audio_d[2]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [10])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_10_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_9_s0  (
+	.D(I_audio_d[1]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [9])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_9_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_8_s0  (
+	.D(I_audio_d[0]),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Audio_d_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [8])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_8_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_24_s0  (
+	.D(I_validity_bit),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Validity_bit_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [24])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_24_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_25_s0  (
+	.D(I_user_bit),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/User_bit_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [25])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_25_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_26_s0  (
+	.D(I_chan_status_bit),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_package/Chan_status_bit_req ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Parity_vector [26])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Parity_vector_26_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/O_spdif_tx_d_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n187_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/Spdif_tx_d )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/O_spdif_tx_d_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_4_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_package/n15_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [4])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame_4_s0 .INIT=1'b0;
+MUX2_LUT5 \u_spdif_tx_top/u_spdif_tx_package/n62_s51  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_41 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_42 ),
+	.S0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.O(\u_spdif_tx_top/u_spdif_tx_package/n62_51 )
+);
+MUX2_LUT5 \u_spdif_tx_top/u_spdif_tx_package/n62_s50  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_43 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_44 ),
+	.S0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.O(\u_spdif_tx_top/u_spdif_tx_package/n62_53 )
+);
+MUX2_LUT5 \u_spdif_tx_top/u_spdif_tx_package/n62_s53  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_45 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_46 ),
+	.S0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.O(\u_spdif_tx_top/u_spdif_tx_package/n62_55 )
+);
+MUX2_LUT5 \u_spdif_tx_top/u_spdif_tx_package/n62_s52  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_47 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_48 ),
+	.S0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [1]),
+	.O(\u_spdif_tx_top/u_spdif_tx_package/n62_57 )
+);
+MUX2_LUT6 \u_spdif_tx_top/u_spdif_tx_package/n62_s48  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_53 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_51 ),
+	.S0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.O(\u_spdif_tx_top/u_spdif_tx_package/n62_59 )
+);
+MUX2_LUT6 \u_spdif_tx_top/u_spdif_tx_package/n62_s49  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_package/n62_57 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_package/n62_55 ),
+	.S0(\u_spdif_tx_top/u_spdif_tx_package/Cnt_sub_frame [2]),
+	.O(\u_spdif_tx_top/u_spdif_tx_package/n62_61 )
+);
+LUT2 \u_spdif_tx_top/u_spdif_tx_encode/n33_s0  (
+	.I0(O_sub_frame0_flag),
+	.I1(O_sub_frame1_flag),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n33_3 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n33_s0 .INIT=4'hE;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n617_s9  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/n617_14 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n617_13 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n617_s9 .INIT=16'h3335;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n618_s9  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/n618_14 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n618_13 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n618_s9 .INIT=16'h3335;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n621_s9  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/n621_14 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n621_13 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n621_s9 .INIT=16'h7FC0;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n622_s10  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/n622_15 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/n621_14 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n622_14 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n622_s10 .INIT=16'h7CFA;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n55_s2  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/n56_7 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [3]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/n58_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n55_6 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n55_s2 .INIT=16'h7800;
+LUT3 \u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/n621_14 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_s3 .INIT=8'hF1;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n427_s1  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [1]),
+	.I3(\u_spdif_tx_top/Spdif_tx_d ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n427_5 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n427_s1 .INIT=16'hE00E;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n617_s10  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/n427_5 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/n617_15 ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/n617_16 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n617_14 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n617_s10 .INIT=16'hC355;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n618_s10  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [1]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble ),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/n618_15 ),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/n617_16 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n618_14 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n618_s10 .INIT=16'h3CAA;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n621_s10  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [4]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/n56_7 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n621_14 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n621_s10 .INIT=16'h8000;
+LUT3 \u_spdif_tx_top/u_spdif_tx_encode/n622_s11  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n622_15 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n622_s11 .INIT=8'h3A;
+LUT2 \u_spdif_tx_top/u_spdif_tx_encode/n58_s4  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n58_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n58_s4 .INIT=4'h1;
+LUT2 \u_spdif_tx_top/u_spdif_tx_encode/n56_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n56_7 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n56_s3 .INIT=4'h8;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n617_s11  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n617_15 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n617_s11 .INIT=16'h008F;
+LUT3 \u_spdif_tx_top/u_spdif_tx_encode/n617_s12  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [4]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n617_16 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n617_s12 .INIT=8'h01;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n618_s11  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n618_15 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n618_s11 .INIT=16'hBC00;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n54_s4  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [3]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n54_9 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n54_s4 .INIT=16'h8000;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n56_s4  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [2]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/n58_8 ),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n56_9 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n56_s4 .INIT=16'h6A00;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n54_s5  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/n54_9 ),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [4]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n54_11 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n54_s5 .INIT=16'h0006;
+LUT4 \u_spdif_tx_top/u_spdif_tx_encode/n57_s3  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.I3(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n57_8 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n57_s3 .INIT=16'h0006;
+LUT3 \u_spdif_tx_top/u_spdif_tx_encode/n58_s5  (
+	.I0(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0]),
+	.I1(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.I2(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [1]),
+	.F(\u_spdif_tx_top/u_spdif_tx_encode/n58_10 )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/n58_s5 .INIT=8'h01;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg_1_s0  (
+	.D(\u_spdif_tx_top/Block_start_flag ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [0]),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n33_3 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/I_sub_frame_flag_reg_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_4_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n54_11 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [4])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_4_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_3_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n55_6 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [3])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_3_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_2_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n56_9 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [2])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_2_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n57_8 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n58_10 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Cnt_sub_frame_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n621_13 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n622_14 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/State_spdif_encode_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_o_1_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [1]),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/Spdif_tx_data_Z [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_o_1_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_o_0_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [0]),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/Spdif_tx_data_Z [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_o_0_s0 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg_2_s0  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [1]),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg [2])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/I_block_flag_reg_2_s0 .INIT=1'b0;
+DFFCE \u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_s1  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n427_5 ),
+	.CLK(I_clk),
+	.CE(\u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_8 ),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble )
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Inv_preamble_s1 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_1_s2  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n617_13 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [1])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_1_s2 .INIT=1'b0;
+DFFC \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_0_s2  (
+	.D(\u_spdif_tx_top/u_spdif_tx_encode/n618_13 ),
+	.CLK(I_clk),
+	.CLEAR(\u_spdif_tx_top/n13_6 ),
+	.Q(\u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data [0])
+);
+defparam \u_spdif_tx_top/u_spdif_tx_encode/Spdif_tx_data_0_s2 .INIT=1'b0;
+endmodule

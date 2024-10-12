@@ -1,0 +1,13 @@
+[General]
+ipc_version=4
+file=spdif_tx
+module=SPDIF_TX_Top
+target_device=gw1nr9c-004
+type=spdif_tx
+version=1.0
+
+[Config]
+DISABLE_IO_INSERTION=true
+LANG=0
+SPDIF_DATA_WIDTH=16
+Synthesis_tool=GowinSynthesis
