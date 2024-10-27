@@ -20,11 +20,13 @@ module msx_muse_premo (
 	output	wire[7:0]	o_ADDRDATA,
 // COMM
 	input	wire		i_UART_RX,
-	output	wire		i_UART_TX,
+	output	wire		o_UART_TX,
+// SPDIF
+	 output	wire		o_SPDIF,			// S/PIDF
 // LED
-	 output	wire		o_SPDIF,
-// LED
-	output	wire[5:0]	o_LED				// TangNano9K OnBoard LEDx6, `LOW=Turn-On
+	output	wire[5:0]	o_LED,				// TangNano9K OnBoard LEDx6, `LOW=Turn-On
+//
+	output	wire		o_UART_TX2
 );
 
 assign	o_LED = 6'b111111;
@@ -46,13 +48,13 @@ Gowin_rPLL u_rPLL_x6(
 	.clkin(i_CLK_3M58)
 );
 
-wire clk_SND_3M58	= i_CLK_3M58;		// for PSC/OPLL/IKASCC
-wire clk_SND_21M4	= clk_21M4;			// for WTS(HRASCC)
-wire clk_SYS		= clk_17M9;
-wire clk_DAC		= clk_SYS;
-wire clk_SPIRX		= clk_SYS;
-wire clk_CONTROL	= clk_SYS;
-wire clk_SPDIF		= i_CLK_3M072;
+wire clk_SND_3M58	= i_CLK_3M58;		// for PSC/OPLL/IKASCC (by External)
+wire clk_SND_21M4	= clk_21M4;			// for WTS(HRASCC), (i_CLK_3M58 x6 by rPLL)
+wire clk_SPIRXRAM	= clk_17M9;
+wire clk_DAC		= clk_17M9;
+wire clk_SPIRX		= clk_17M9;
+wire clk_CONTROL	= clk_17M9;
+wire clk_SPDIF		= i_CLK_3M072;		// for S/PIDIF 48KHz(32bits x2) (by External)
 
 //-----------------------------------------------------------------------
 // DATA BUS, CONTROL BUS
@@ -77,7 +79,8 @@ assign	o_ADDRDATA		= bus_DATA;
 //-----------------------------------------------------------------------
 // UART
 //-----------------------------------------------------------------------
-assign i_UART_TX = i_UART_RX;
+assign o_UART_TX = i_UART_RX;
+assign o_UART_TX2= i_UART_RX;
 
 //-----------------------------------------------------------------------
 // SCC(IKASCC)
@@ -199,12 +202,12 @@ wire signed [15:0]	SOUND_ALL_y		= opll_sound + snd_IKASCC_x + snd_PSG_x + snd_WT
 //-----------------------------------------------------------------------
 wire signed [15:0]	SOUND_DAC_z;
 
-MMP_cdc u_DacCdc (
+MMP_cdc_L2F u_DacCdc (
 	.i_RST_n	(i_RST_n		),
 	.i_CLK_A	(clk_SND_3M58	),
-	.i_DATA		(SOUND_ALL_y	),
+	.i_DATA_A	(SOUND_ALL_y	),
 	.i_CLK_B	(clk_DAC		),
-	.o_DATA		(SOUND_DAC_z	)
+	.o_DATA_B	(SOUND_DAC_z	)
 );
 
 MMP_dac u_Dac (
@@ -224,12 +227,12 @@ MMP_dac u_Dac (
 // S/PDIF Transmitter
 //-----------------------------------------------------------------------
 wire signed [15:0]	SOUND_SPDIF_z;
-MMP_cdc u_SpdifCdc (
+MMP_cdc_F2L u_SpdifCdc (
 	.i_RST_n	(i_RST_n		),
 	.i_CLK_A	(clk_SND_3M58	),
-	.i_DATA		(SOUND_ALL_y	),
+	.i_DATA_A	(SOUND_ALL_y	),
 	.i_CLK_B	(clk_SPDIF	),
-	.o_DATA		(SOUND_SPDIF_z	)
+	.o_DATA_B	(SOUND_SPDIF_z	)
 );
 
 MMP_spdif u_spdif (
@@ -251,7 +254,7 @@ wire		fifo_FULLY;
 
 MMP_fifo u_MmpMemoryBuff (
 	.i_RST_n		(i_RST_n		),
-	.i_CLK			(clk_SYS		),
+	.i_CLK			(clk_SPIRXRAM	),
 	.i_PUSH_S		(fifo_push_s	),
 	.i_PUSH_DT		(fifo_push_dt	),		// wire[23:0]	
 	.i_POP_S		(fifo_pop_s		),
